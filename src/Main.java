@@ -6,24 +6,17 @@ public class Main {
 
 				Scanner scanner = new Scanner(System.in);
 				
-				int c500=0;
-				int c200=0;
-				int c100=0;
-				int c50=0;
-				int c20=0;
-				int c10=0;
-				int c5=0;
-				int c2=0;
-				int c1=0;
+				int a [] = {500,200,100,50,20,10,5,2,1};
 				int pass = 12345678;
 				int balance = 1000;
-				
-				
+				int p;
 				
 				
 				while(true){
 					System.out.println("enter the password");
-					int p = scanner.nextInt();
+					
+					if(scanner.hasNextInt()){
+						p = scanner.nextInt();
 					
 					if(p!=pass){
 						System.out.println("Invalid password! Please try again.");
@@ -33,12 +26,22 @@ public class Main {
 					else if(p==pass){
 						System.out.println("the password is correct");
 						System.out.println("__________________________");
+						
 						while(true){
 							System.out.println("enter 1 for check balance");
 							System.out.println("enter 2 for a credit");
 							System.out.println("enter 3 for add into a balance");
 							System.out.println("enter 2 for Exit");
-							int choise = scanner.nextInt();
+							
+							
+							
+							
+//							if(!scanner.hasNextInt()){
+//								System.out.println("incorrect");
+//								break;
+//							}
+//							else if(scanner.hasNextInt()){
+								int choise = scanner.nextInt();
 						switch (choise) {
 						case 1:{
 							System.out.println("__________________________");
@@ -73,58 +76,13 @@ public class Main {
 							balance = balance - credit;
 							}
 							
-							if(credit >= 500){
-								c500 = credit / 500;
-								System.out.println("number of bills of 500 = "+c500);
-								credit = credit - (c500*500);
+							for (int i = 0; i < a.length; i++) {
+								if(credit>=a[i]){
+									System.out.println("number of "+a[i]+" - "+credit/a[i]);
+									credit = credit % a[i];
+								}
 							}
-							if(credit >= 200){
-								c200 = credit / 200;
-								System.out.println("number of bills of 200 = "+c200);
-								credit = credit - (c200*200);
-							}
-							if(credit >= 100){
-								c100 = credit / 100;
-								System.out.println("number of bills of 100 = "+c100);
-								credit = credit - (c100*100);
-							}
-							if(credit >= 50){
-								c50 = credit / 50;
-								System.out.println("number of bills of 50 = "+c50);
-								credit = credit - (c50*50);
-							}
-							
-							if(credit >= 20){
-								c20 = credit / 20;
-								System.out.println("number of bills of 20 = "+c20);
-								credit = credit - (c20*20);
-							}
-							
-							if(credit >= 10){
-								c10 = credit / 10;
-								System.out.println("number of bills of 10 = "+c10);
-								credit = credit - (c10*10);
-							}
-							
-							if(credit >= 5){
-								c5 = credit / 5;
-								System.out.println("number of bills of 5 = "+c5);
-								credit = credit - (c5*5);
-							}
-							if(credit >= 2){
-								c2 = credit / 2;
-								System.out.println("number of bills of 2 = "+c2);
-								credit = credit - (c2*2);
-							}
-							if(credit >= 1){
-								c1 = credit / 1;
-								System.out.println("number of bills of 1 = "+c1);
-								credit = credit - (c1*1);
-							}
-							
-							
-							
-							
+																				
 							
 							System.out.println("__________________________");
 							System.out.println("your current balance = "+balance);
@@ -190,9 +148,13 @@ public class Main {
 							break;
 						}
 						}
-						}			
-					}		
+						}
+							
+					}	
+				}
 					scanner.close();
+
+					
 				}
 
 	}
